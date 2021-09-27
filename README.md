@@ -1,0 +1,1 @@
+#tricks in programing

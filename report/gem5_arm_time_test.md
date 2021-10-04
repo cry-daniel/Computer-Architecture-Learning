@@ -92,7 +92,7 @@ https://www.gem5.org/documentation/general_docs/m5ops/
         return 0;
     }
     ```
-    注意到在 #include 时增加了 "gem5/m5ops.h" ，而这个很明显是本来不在 include path 的路径上的，所以在编译时，需要添加 "-I ～gem5/include"  以及 "-L ~gem5/util/m5/build/aarch64/out -lm5" ，最终的编译命令如下所示：
+    注意到在 #include 时增加了 "gem5/m5ops.h" ，而这个很明显是本来不在 include path 的路径上的，所以在编译时，需要添加 "-I ~/gem5/include"  以及 "-L ~/gem5/util/m5/build/aarch64/out -lm5" ，最终的编译命令如下所示：
     ```bash
     cd ~/gem5/mountfile
     arm-linux-gnueabi-g++ test.cpp -o test -I ~/gem5/include/  -L ~/gem5/util/m5/build/arm/out -lm5 -static

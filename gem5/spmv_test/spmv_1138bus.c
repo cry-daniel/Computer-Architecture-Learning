@@ -86,11 +86,10 @@ int main()
 		if (info!=ARMPL_STATUS_SUCCESS) printf("ERROR: armpl_spmv_exec_d returned %d\n", info);
 	}
 	m5_dump_stats(0,0);
-	m5_exit(0);
-	printf("finish!");
-	return 0;
+	//m5_exit(0);
+	printf("finish!\n");
 	printf("Computed vector y:\n");
-	for (int i=0; i<M; i++) {
+	for (int i=0; i<10; i++) {
 		printf("\t%2.1f\n", y[i]);
 	}
 

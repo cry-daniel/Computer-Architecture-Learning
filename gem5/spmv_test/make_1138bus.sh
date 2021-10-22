@@ -3,7 +3,7 @@ export object=spmv_1138bus
 sudo rm ${object}.o
 sudo rm ${object}_none.exe
 echo "Compiling program ${object}.c:"
-sudo aarch64-linux-gnu-gcc-10  -c -I/home/fugelin/Tools/arm/armpl_21.0_gcc-10.2/include -std=c11 -march=armv8-a -I ~/gem5/include ${object}.c -o ${object}.o
+sudo aarch64-linux-gnu-gcc-10  -c -I/home/fugelin/Tools/arm/armpl_21.0_gcc-10.2/include -std=c11 -march=armv8-a+nosimd -I ~/gem5/include ${object}.c -o ${object}.o
 echo "Compiling program ${object}.o done!"
 echo "Linking program ${object}.exe:"
 sudo aarch64-linux-gnu-gcc-10  -I/home/fugelin/Tools/arm/armpl_21.0_gcc-10.2/include -L ~/gem5/util/m5/build/aarch64/out ${object}.o -L ~/gem5/util/m5/build/aarch64/out -lm5 -L/home/fugelin/Tools/arm/armpl_21.0_gcc-10.2/lib -larmpl_lp64 -lgfortran -lm -static -o ${object}_none.exe

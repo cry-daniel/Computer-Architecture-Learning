@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./configs/configs_$1.sh $2
+. ./configs/configs_$1.sh
 
 cd ${GEM5_PATH}
 

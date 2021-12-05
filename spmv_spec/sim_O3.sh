@@ -1,11 +1,10 @@
 #!/bin/bash
 
-. ./configs/configs_$2.sh $3
+. ./configs/configs_$2.sh
 
 cd ${GEM5_PATH}
 
 if [ ${SE_OR_FS} == SE ];then 
-rm -r ${SE_OUT_DIR_O3};
 build/${ARCH}/gem5.${METHOD} --outdir=${SE_OUT_DIR_O3}/$1 \
 configs/example/se.py \
 --cpu-type=O3_ARM_v7a_3 \
@@ -21,7 +20,6 @@ configs/example/se.py \
 --l2-hwp-type \
 StridePrefetcher
 elif [ ${SE_OR_FS} == FS ];then
-rm -r ${FS_OUT_DIR_O3};
 build/${ARCH}/gem5.${METHOD} --outdir=${FS_OUT_DIR_O3}/$1 \
 configs/example/fs.py \
 --kernel /home/data/ChenRuiyang/gem5/full_system_images/binaries/vmlinux.arm64 \

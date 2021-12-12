@@ -104,7 +104,7 @@
     -saveSimpointWeights ../output/gem5/weight_file \
     -inputVectorsGzipped
     ```
-    在`~/ChenRuiyang/SimPoint.3.2/output/gem5`中会出现`simpoint_file 以及 weight_file`，其中第一个代表 Simpoint 所属的 interval，第二个代表每个 interval 的权重文件.
+    "-maxK 30" 参数代表最大的聚类个数为30；在`~/ChenRuiyang/SimPoint.3.2/output/gem5`中会出现`simpoint_file 以及 weight_file`，其中第一个代表 Simpoint 所属的 interval，第二个代表每个 interval 的权重文件.
 +   使用 GEM5 的 `--take-simpoint-checkpoint` 功能进行切分，具体命令如下：
     ```bash
     cd ../gem5
@@ -138,4 +138,6 @@
     -I 10000000 --cpu-type=AtomicSimpleCPU \
     --restore-with-cpu=O3_ARM_v7a_3
     ```
-
+## 后记
++   上面写的都是当时在做做实验时的不成熟的记录，详细的运行命令参见 /home/data/ChenRuiyang/sh_command/spmv_spec 中的 sh 文件.
++   另外后面决定暂时先不做 SEPC 17 了，先做 Graph500 ， SPEC 06/17 的坑等以后遇到再填吧.

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-. ./configs/configs_$2.sh
+. ../spmv_spec/configs/configs_graph500.sh
 
 cd ${GEM5_PATH}
 
 if [ ${SE_OR_FS} == SE ];then 
-build/${ARCH}/gem5.${METHOD} --outdir=${SE_OUT_DIR_O3}/$1 \
+build/${ARCH}/gem5.${METHOD} --outdir=m5out/$2/$1 \
 configs/example/se.py \
 --cpu-type=O3_ARM_v7a_3 \
 --cpu-clock 2.5GHz \
@@ -13,7 +13,7 @@ configs/example/se.py \
 --l1i_size 64kB --l1d_size 32kB --l2_size 1MB \
 --l1i_assoc 8 --l1d_assoc 8 --l2_assoc 16 \
 --cacheline_size 128 \
---mem-type DDR3_2133_8x8 --mem-size 16GB \
+--mem-type DDR4_2400_16x4 --mem-size 16GB \
 -c ${SE_ELF_ROUTE} \
 -o "${SE_INPUT_ROUTE}${OPTIONS}" \
 --restore-simpoint-checkpoint -r $1 --checkpoint-dir ${SE_OUT_DIR_CHECKPOINT} \
@@ -39,4 +39,3 @@ StridePrefetcher;
 else
 echo SE_OR_FS should be SE or FS 
 fi
-

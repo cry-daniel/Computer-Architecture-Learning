@@ -1,11 +1,7 @@
 import os
 
-tests=['bzip2','gcc','mcf','milc','namd','gobmk']
+tests=['graph500']
 
-'''
-'povray','hmmer','sjeng','libquantum','h264ref',\
-'lbm','omnetpp','astar','sphinx3','xalancbmk','specrand'\
-'specrand_2']
-'''
 for item in tests:
-    os.system('nohup time bash process_sim.sh '+item+' > ~/ChenRuiyang/time_rec/'+item+'_process.txt &')
+    os.system('nohup time bash process_sim.sh '+item+' /home/data/ChenRuiyang/time_rec/sim_ > /home/data/ChenRuiyang/time_rec/'+item+'_process.txt &')
+    os.system('nohup time bash process_normal.sh '+item+' /home/data/ChenRuiyang/time_rec/normal_ > /home/data/ChenRuiyang/time_rec/'+item+'_normal.txt &')    

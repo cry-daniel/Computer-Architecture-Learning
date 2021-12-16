@@ -1,8 +1,5 @@
 import numpy as np
 
-weight_route='gem5/graph500_s_13_e_12_long_simpoint_file'
-sim_route='gem5/graph500_s_13_e_12_long_simpoint_file'
-
 stats_name='stats.txt'
 start_sym='---------- Begin Simulation Statistics ----------'
 freq_sym='sim_freq'

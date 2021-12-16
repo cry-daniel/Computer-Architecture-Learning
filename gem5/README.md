@@ -1,1 +1,1 @@
-#gem5 files
+## 详见上一级文件夹的 README.md

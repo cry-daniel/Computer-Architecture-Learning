@@ -1,6 +1,6 @@
 import os
 
-tests=['graph500']
+tests=['graph500_long','gap_bfs']
 
 for item in tests:
     os.system('nohup time bash process_sim.sh '+item+' /home/data/ChenRuiyang/time_rec/sim_ > /home/data/ChenRuiyang/time_rec/'+item+'_process.txt &')

@@ -13,7 +13,7 @@ FS_COMMAND=/home/data/ChenRuiyang/sh_command/spmv_spec/run.sh
 SE_NAME=graph500_s_13_e_12 # 改这个
 FS_NAME=spmv
 
-TEST_ROUTE=/home/data/ChenRuiyang/graph500-graph500-2.1.4/seq-csr
+TEST_ROUTE=/home/data/ChenRuiyang/graph500-graph500-2.1.4/seq-csr #改这个
 
 SE_ELF_ROUTE=${TEST_ROUTE}/seq-csr # 改这个
 SE_INPUT_ROUTE=  # 改这个

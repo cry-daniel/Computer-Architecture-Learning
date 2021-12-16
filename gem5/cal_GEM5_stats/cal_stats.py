@@ -5,8 +5,8 @@ sys.path.append('.')
 import configs
 import utils
 
-route='graph_500_s_13_e_12_O3' # sim & weight 记得改 configs.py 里的 route
-route_normal='graph_500_s_13_e_12_normal'
+route='./stats_checkpoint/graph500_s_13_e_12_long_O3' # sim & weight 记得改 configs.py 里的 route
+route_normal='./stats_checkpoint/mem_change_normal'
 
 IPC_nomral=IPC_sim=0
 Dcache_miss_normal=Dcache_miss_sim=0
@@ -48,9 +48,9 @@ def cal_sim():
                         if i == 0:
                             paras[i]=para
                         else:
-                            # if weight[num]>0.05:
-                            #     paras[i]+=para*weight[num]
-                            paras[i]+=para*weight[num]
+                            if weight[num]>0.05:
+                                paras[i]+=para*weight[num]
+                            # paras[i]+=para*weight[num]
         num+=1
 
     for i in range(len(paras_sym)):
@@ -103,7 +103,7 @@ def cal_normal():
     Pred_incorrect_normal=paras[6]/paras[5]
     ROB_stall_normal=paras[7]/paras[8]
     print()
-    print("Simpoint results are:")
+    print("Normal results are:")
     print("IPC =",IPC_nomral)
     print("Dcache miss rate =",Dcache_miss_normal)
     print("Predict incorrect rate =",Pred_incorrect_normal)

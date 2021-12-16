@@ -1,5 +1,8 @@
 import numpy as np
 
+weight_route='gem5/graph500_s_13_e_12_long_simpoint_file'
+sim_route='gem5/graph500_s_13_e_12_long_simpoint_file'
+
 stats_name='stats.txt'
 start_sym='---------- Begin Simulation Statistics ----------'
 freq_sym='sim_freq'
@@ -15,9 +18,6 @@ paras_sym=[freq_sym,inst_sym,seconds_sym,dcache_hit_sym,dcache_miss_sym,branch_p
     branch_miss_pred_sym,ROB_stall_sym,rename_inst_sym]
 paras=np.zeros(len(paras_sym))
 #freq=inst=ops=dcache_hit=dcache_miss=0
-
-weight_route='gem5/graph_500_s_13_e_12_weight_file'
-sim_route='gem5/graph_500_s_13_e_12_simpoint_file'
 
 # normal 的一般不用改
 freq_sym_nor='sim_freq'

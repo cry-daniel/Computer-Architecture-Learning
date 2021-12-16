@@ -3,10 +3,13 @@ import numpy as np
 import sys
 sys.path.append('.')
 import configs
-import utils
 
 route='./stats_checkpoint/graph500_s_13_e_12_long_O3' # sim & weight 记得改 configs.py 里的 route
 route_normal='./stats_checkpoint/mem_change_normal'
+weight_route='gem5/graph500_s_13_e_12_long_simpoint_file'
+sim_route='gem5/graph500_s_13_e_12_long_simpoint_file'
+
+import utils
 
 IPC_nomral=IPC_sim=0
 Dcache_miss_normal=Dcache_miss_sim=0

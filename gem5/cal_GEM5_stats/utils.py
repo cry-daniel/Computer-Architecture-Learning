@@ -1,6 +1,7 @@
 from numpy.core.fromnumeric import sort
 import configs
 import numpy as np
+from cal_stats import sim_route,weight_route
 
 num_list=['0','1','2','3','4','5','6','7','8','9','.']
 
@@ -20,7 +21,7 @@ def fin(para_sym,line):
         flag=True
     return flag,para
 
-def read_weight_file(weight_route=configs.weight_route,sim_route=configs.sim_route):
+def read_weight_file(weight_route=weight_route,sim_route=sim_route):
     f_w=open(weight_route)
     f_s=open(sim_route)
     weight=f_w.readlines()

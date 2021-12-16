@@ -116,4 +116,24 @@
     |ROB stall rate (%)     |0.0028|0.0031 |9.67  |
 
 ### 结论
++   后来又尝试了减少聚类总数但增加 interval length 的策略，但是准确率依然不够，详见下表：
+    ```
+    Simpoint results are:
+    IPC = 1.6541297322928858
+    Dcache miss rate = 0.05404827342566031
+    Predict incorrect rate = 0.020100357727433814
+    ROB stall rate = 2.463187811511429e-05
+
+    Normal results are:
+    IPC = 1.667545945165815
+    Dcache miss rate = 0.06463431515940303
+    Predict incorrect rate = 0.01663909859660678
+    ROB stall rate = 2.86616936490782e-05
+
+    Errors are:
+    IPC : 0.8045483191526154 %
+    Dcache miss : 16.37836141318294 %
+    Predict incorrect : 20.801962983336676 %
+    ROB stall: 14.059935129107476 %
+    ```
 +   在重载时更改 CPU,cache 以及 mem 的参数对除了 ROB stall 外的实验结果都没有特别大的影响，ROB stall 受影响大主要是因为 Stall 次数太少了，所以较少的浮动在误差上会体现的比较大，但是从总的 ROB stall rate 来看绝对误差都在 0.001% 内，还是可以接受的.

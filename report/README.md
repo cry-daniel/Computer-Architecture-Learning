@@ -24,3 +24,8 @@
 
 ### Simpoint_record.md
 +   记录在 Graph500 实验中调整 Simpoint聚类数、cpu参数、cache参数以及mem参数对实验结果的影响
+
+## Testbench 文件夹下的内容
+
+### Graph500.md
++   记录 Graph500 Kernel 在算什么以及参数的含义

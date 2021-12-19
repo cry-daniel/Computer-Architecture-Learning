@@ -29,3 +29,6 @@
 
 ### Graph500.md
 +   记录 Graph500 Kernel 在算什么以及参数的含义
+
+### Gap.md
++   Gap Benchmark 的 Kernel 含义以及参数的调整

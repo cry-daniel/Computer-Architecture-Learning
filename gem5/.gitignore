@@ -1,3 +1,4 @@
 spmv_test/*.exe
 spmv_test_old/*.exe
 armpl_source_file/
+cal_GEM5_stats/__pycache__/

@@ -14,13 +14,9 @@
 
 ### gem5/apl_test_report.md
 +   对于arm performance library的测试
-+   测试存在问题，做好后要更新一下
++   测试存在问题，结果不具有代表性
 
 ## Simpoint 文件夹下的内容
-
-### gem5_simpoint.md
-+   记录如何在 gem5 中使用 Simponit.
-+   注：这个 markdown 记录的错误很多，后面代码又重写了一遍，详细见 spmv_spec 文件夹内的运行代码
 
 ### Simpoint_record.md
 +   记录在 Graph500 实验中调整 Simpoint聚类数、cpu参数、cache参数以及mem参数对实验结果的影响
@@ -32,3 +28,6 @@
 
 ### Gap.md
 +   Gap Benchmark 的 Kernel 含义以及参数的调整
+
+### SPEC17_and_Simpoint.md
++   SPEC17 & Simpoint 安装教程

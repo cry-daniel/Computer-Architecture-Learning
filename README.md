@@ -15,11 +15,8 @@
 ### report: 实验报告以及论文的阅读报告
 +   内容详见内部的 README.md
 
-### spmv_spec
-+   对 Benchmark 进行模拟的代码，主要是使用 Simpoint 将一个长的程序切成很多小的 checkpoint ，更改参数模拟时可以减少很多时间. 没有 Simpoint 运行不了, Simpoint 有官网，下载安装就可以了. 后续还会优化，就先不写太多了
+### simpoint_GEM5
++   内有便于在 GEM5 内使用 simpoint 的脚本文件，详见内部的 README.md
 
-### spmv_spec_test_O3
-+   里面的程序验证了 checkpoint 改参数是可行的，实验报告在 report/Simpoint
-
-### tricks
+### docs
 +   写代码时的技巧，让代码更加优雅

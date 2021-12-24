@@ -47,7 +47,7 @@ SE_ELF_ROUTE=${TEST_ROUTE}/seq-csr
 SE_INPUT_ROUTE= 
 
 # 这个是传递给 ELF 的参数，等价与在 GEM5 外，命令行中 ELF 后的那些参数
-# 在这个例子中就等价于 ".{TEST_ROUTE}/seq-csr -s 13 -e 12"
+# 在这个例子中就等价于 "{TEST_ROUTE}/seq-csr -s 13 -e 12"
 # 这个是一般要改的
 OPTIONS=' -s 13 -e 12' 
 

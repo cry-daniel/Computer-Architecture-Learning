@@ -1,10 +1,13 @@
 #!/bin/bash
 
-. ./configs/configs_$1.sh # 参数 $1 代表选用 XXX = $1 的 configs_XXX.sh
+NAME=$1
 
-cd ${GEM5_PATH} # 移动当前目录到 Gem5 下，移动的话后面的一些参数就不用写绝对地址了
+#   注：这里是 ./configs 而不是 ../configs 是因为调用它的文件在上一级
+. ./configs/configs_${NAME}.sh #    参数 $1 代表选用 XXX = $1 的 configs_XXX.sh
 
-# 正常模拟(指不用Simpoint)，参数都来自 configs_XXX.sh
+cd ${GEM5_PATH} #   移动当前目录到 Gem5 下，移动的话后面的一些参数就不用写绝对地址了
+
+#   正常模拟(指不用Simpoint)，参数都来自 configs_XXX.sh
 
 if [ ${SE_OR_FS} == SE ];then 
 

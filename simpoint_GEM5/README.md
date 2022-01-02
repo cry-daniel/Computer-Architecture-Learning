@@ -25,7 +25,7 @@
 +   程序将会执行以下功能：
     +   使用新的参数并行地重载所有的 checkpoint . (对于 configs_example.sh 所对应的参数，总时间约为 60s，相较于原来动辄数小时的仿真时间是极大优化)
 +   如果要阅读或修改源码，推荐顺序：
-    `configs/configs_example.sh` $\rightarrow$ `process_all_test.py` $\rightarrow$ `process_reload.sh` $\rightarrow$ `sim_O3.sh`
+    `configs/configs_example.sh` $\rightarrow$ `process_all_test.py` $\rightarrow$ `process_reload.sh` $\rightarrow$ `sim_reload.sh`
     
 ###  附录
 +   FS 模式下不太好用 Simpoint ，就只写了 SE 模式的.

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./configs/configs_$1.sh # 参数 $1 代表选用叫什么的 configs_XXX.sh
+. ./configs/configs_$1.sh # 参数 $1 代表选用 XXX = $1 的 configs_XXX.sh
 
 cd ${GEM5_PATH} # 移动当前目录到 Gem5 下，移动的话后面的一些参数就不用写绝对地址了
 

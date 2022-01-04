@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#   这两个是给 process_sim.sh 写的，第一个对应写的脚本所在文件夹的地址,
-#   第二个对应记录程序运行结果的地址，改成自己的地址即可
+#   这两个是给 process_sim.sh 写的，第一个对应写的脚本所在文件夹的地址,也就是 simpoint_GEM5/sim 所在的位置
+#   第二个对应记录程序运行结果的地址，这个在哪都没关系，改成自己的地址即可
+#   这两个需要改一下
 SH_ROUTE=/home/data/ChenRuiyang/sh_command/simpoint_GEM5/sim
 REC_ROUTE=/home/data/ChenRuiyang/time_rec
 
@@ -9,6 +10,7 @@ REC_ROUTE=/home/data/ChenRuiyang/time_rec
 SE_OR_FS=SE 
 
 #   下面是 GEM5 的一些基本参数，包括 GEM5 的路径，架构，以及仿真模式
+#   如果有需要可以改一下
 GEM5_PATH=/home/data/ChenRuiyang/gem5
 ARCH=ARM
 METHOD=fast
@@ -59,7 +61,11 @@ SE_INPUT_ROUTE=
 ##  这个是传递给 ELF 的参数，等价与在 GEM5 外，命令行中 ELF 后的那些参数
 ##  在这个例子中就等价于 "{TEST_ROUTE}/seq-csr -s 13 -e 12"
 ##  做 Simpoint 时需要改一下
-OPTIONS=' -s 13 -e 12' 
+OPTIONS=' -s 13 -e 12'
+
+#   simpoint 安装的地址
+#   做 simpoint 时需要改一下
+SIMPOINT_PATH=/home/data/ChenRuiyang/SimPoint.3.2
 
 ##  Simpoint 的两个参数
 ##  这个一般不用改
@@ -78,5 +84,5 @@ SE_OUT_DIR_O3=m5out/${SE_NAME}/${SE_NAME}_O3
 
 SE_OUT_DIR_RELOAD=m5out/${SE_NAME}/${SE_NAME}_${SE_SUFFIX}
 
-SE_simpoint_file_path=/home/data/ChenRuiyang/SimPoint.3.2/output/gem5/${SE_NAME}/${SE_NAME}_simpoint_file
-SE_weight_file_path=/home/data/ChenRuiyang/SimPoint.3.2/output/gem5/${SE_NAME}/${SE_NAME}_weight_file
+SE_simpoint_file_path=${SIMPOINT_PATH}/output/gem5/${SE_NAME}/${SE_NAME}_simpoint_file
+SE_weight_file_path=${SIMPOINT_PATH}/output/gem5/${SE_NAME}/${SE_NAME}_weight_file

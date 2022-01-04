@@ -8,7 +8,8 @@ if [ ${SE_OR_FS} == SE ];then
 
 build/${ARCH}/gem5.${METHOD} --outdir=${SE_OUT_DIR_CHECKPOINT} \
 configs/example/se.py \
---take-simpoint-checkpoint=${SE_simpoint_file_path},${SE_weight_file_path},\
+--take-simpoint-checkpoint=\
+${SE_simpoint_file_path},${SE_weight_file_path},\
 ${interval_length},${warmup_length} \
 --cpu-type=AtomicSimpleCPU \
 ${CACHE_PRAM} \

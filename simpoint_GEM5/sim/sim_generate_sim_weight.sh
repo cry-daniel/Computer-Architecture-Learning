@@ -2,14 +2,14 @@
 
 . ../configs/configs_$1.sh
 
-cd /home/data/ChenRuiyang/SimPoint.3.2/bin
+cd ${SIMPOINT_PATH}/bin
 
 if [ ${SE_OR_FS} == SE ];then
 
-rm -r /home/data/ChenRuiyang/SimPoint.3.2/output/gem5/${SE_NAME}
-mkdir /home/data/ChenRuiyang/SimPoint.3.2/output/gem5/${SE_NAME}
+rm -r ${SIMPOINT_PATH}/output/gem5/${SE_NAME}
+mkdir ${SIMPOINT_PATH}/output/gem5/${SE_NAME}
 
-./simpoint -loadFVFile /home/data/ChenRuiyang/gem5/${SE_OUT_DIR_INIT}/simpoint.bb.gz \
+./simpoint -loadFVFile ${GEM5_PATH}/${SE_OUT_DIR_INIT}/simpoint.bb.gz \
 -maxK 30 -saveSimpoints ${SE_simpoint_file_path} \
 -saveSimpointWeights ${SE_weight_file_path} \
 -inputVectorsGzipped

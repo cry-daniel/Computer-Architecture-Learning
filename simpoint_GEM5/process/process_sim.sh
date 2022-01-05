@@ -14,10 +14,9 @@ cd ${SH_ROUTE};nohup time bash sim_init.sh ${NAME} > ${REC_ROUTE}/${SE_NAME}/${S
 cd ${SH_ROUTE};nohup time bash sim_generate_sim_weight.sh ${NAME} > ${REC_ROUTE}/${SE_NAME}/${SE_NAME}_sim_weight.txt 
 cd ${SH_ROUTE};nohup time bash sim_generate_checkpoint.sh ${NAME} > ${REC_ROUTE}/${SE_NAME}/${SE_NAME}_checkpoint.txt 
 #   times 是读写了多少个 checkpoint
-times=$(ls ${GEM5_PATH}/${SE_OUT_DIR_CHECKPOINT} | wc -l)
-#   times-4 是因为有 config.ini,config.js,fs,stats.txt
+times=$(ls ${GEM5_PATH}/${SE_OUT_DIR_CHECKPOINT} | grep simpoint | wc -l)
 mkdir ${REC_ROUTE}/${SE_NAME}/${SE_NAME}_O3
-for ((i=1;i<=times-4;i++))
+for ((i=1;i<=times;i++))
 #   对每一个 checkpoint 做 O3 重载
 do cd ${SH_ROUTE};nohup time bash sim_O3.sh $i ${NAME} > ${REC_ROUTE}/${SE_NAME}/${SE_NAME}_O3/$i.txt &
 done

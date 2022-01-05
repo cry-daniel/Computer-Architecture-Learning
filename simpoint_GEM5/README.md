@@ -16,7 +16,7 @@
     -s, --simpoint        use simpoint to generate checkpoint
     -r, --reload          use new parms to reload checkpoint
     ```
-+   在执行程序前 **要先写好 configs_xxx.sh** ,直接参考 configs/configs_example.sh 更改即可,写好后保存在 configs 目录下.
++   在执行程序前 **要先写好 configs_xxx.sh** ,直接参考 configs/configs_example.sh 更改即可,写好后保存在 configs 目录下，另外 **记得更改一下 process_all_tests.py 中注释要更改的输出重定向的地址**.
 +   `-n NAME` 是为了在命令行中更快捷的指定对象,不必在原 python 文件中修改; `-s` 是指定执行 simpoint 操作, `-r` 是指定执行 reload 操作,因为转入了后台运行,所以在 simpoint 或 reload 时命令行只会显示 `nohup: redirecting stderr to stdout` ,程序的运行情况可以参考保存运行结果的文件夹(configs_xxx.sh 中设置)或者`htop`直接查看 CPU 运行情况.
 +   simpoint 通常会需要数个小时,因为其包含了采用 Atomic 初始运行程序以及写 checkpoint ,但是在 simpoint 生成 checkpoint 后, reload 通常只需要一分钟就可以出结果.
 +   例
@@ -51,6 +51,6 @@
 +   如果要阅读或修改源码，推荐顺序：
     `configs/configs_example.sh` $\rightarrow$ `process/process_all_test.py` $\rightarrow$ `process/process_reload.sh` $\rightarrow$ `sim/sim_reload.sh`
     
-###  附录
+###  补充
 +   FS 模式下不太好用 Simpoint ，就只写了 SE 模式的.
 +   一般情况下都应先进行 simpoint 生成 checkpoint ,在有了 checkpoint 之后,就可以随意更改参数进行仿真(reload),不用再进行 simpoint 了.

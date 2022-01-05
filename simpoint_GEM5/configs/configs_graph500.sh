@@ -82,7 +82,7 @@ SE_OUT_DIR_CHECKPOINT=m5out/${SE_NAME}/${SE_NAME}_checkpoint
 
 SE_OUT_DIR_O3=m5out/${SE_NAME}/${SE_NAME}_O3
 
-SE_OUT_DIR_RELOAD=m5out/${SE_NAME}/${SE_NAME}_${SE_SUFFIX}
+SE_OUT_DIR_RELOAD=m5out/RELOAD/${SE_NAME}_${SE_SUFFIX}
 
 SE_simpoint_file_path=${SIMPOINT_PATH}/output/gem5/${SE_NAME}/${SE_NAME}_simpoint_file
 SE_weight_file_path=${SIMPOINT_PATH}/output/gem5/${SE_NAME}/${SE_NAME}_weight_file

@@ -49,7 +49,11 @@ def read_weight_file(weight_route=weight_route,sim_route=sim_route):
         res.append(item[0])
     return res
 
-        
+def num_sort(a):
+    if str.isdigit(a[0]):
+        return int(a)
+    else:
+        return a
 
 if __name__=="__main__":
-    read_weight_file()
+    print(read_weight_file())

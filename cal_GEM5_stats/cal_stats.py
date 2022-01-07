@@ -5,9 +5,11 @@ sys.path.append('.')
 import configs
 import argparse
 
-sim_name='graph500_s_13_e_12'
-normal_name='graph500_s_13_e_12_normal'
-checkpoint_name='graph500_s_13_e_12_normal_profile'
+#   simpoint 文件对应的前缀，如不是使用 simpoint_GEM5 生成的则需要更改后面的 weight_route 与 sim_route
+sim_name='graph500_s_14_e_14'
+
+normal_name='normal'
+checkpoint_name='test'
 
 route='./stats/'+checkpoint_name
 route_normal='./stats/'+normal_name
@@ -29,8 +31,9 @@ def cal_sim():
     paras_sym=configs.paras_sym
     paras=configs.paras
     weight=utils.read_weight_file()
+    
+    #   在并行执行reload时生成的文件夹可能不是顺序的，这个时候 os.walk 遍历就会出问题，解决方法是用 dir 记录每次访问的文件夹序号.
     for root,subdir,file in os.walk(route):
-        #print(root,subdir,file)
         if root == route:
             for i in subdir:
                 dir.append(i)
@@ -38,9 +41,10 @@ def cal_sim():
             #print(subfile)
             if subfile == stats_name:
                 #print('yes')
+                #print(root+'/'+subfile)
                 fp=open(root+'/'+subfile)
                 res.append(fp.readlines())
-
+    
     num=0
 
     for stats in res:
@@ -52,17 +56,15 @@ def cal_sim():
                 for i in range(len(paras_sym)):
                     flag,para=utils.fin(paras_sym[i],line)
                     if flag == True:
-                        #print(res[num])
                         if i == 0:
                             paras[i]=para
                         else:
-                            if weight[num]>0.05:
-                                paras[i]+=para*weight[num]
-                            # paras[i]+=para*weight[num]
+                            #   下面更改使得可以适应不同的顺序
+                            paras[i]+=para*weight[int(dir[num])-1]
         num+=1
 
-    for i in range(len(paras_sym)):
-        print(paras_sym[i],paras[i])
+    # for i in range(len(paras_sym)):
+    #     print(paras_sym[i],paras[i])
         
     IPC_sim=paras[1]/(2.5e9*paras[2])
     Dcache_miss_sim=paras[4]/(paras[3]+paras[4])
@@ -73,7 +75,7 @@ def cal_sim():
     print("IPC =",IPC_sim)
     print("Dcache miss rate =",Dcache_miss_sim)
     print("Predict incorrect rate =",Pred_incorrect_sim)
-    print("ROB stall rate =",ROB_stall_sim)
+    #print("ROB stall rate =",ROB_stall_sim)
     
     return IPC_sim,Dcache_miss_sim,Pred_incorrect_sim,ROB_stall_sim
     
@@ -115,7 +117,7 @@ def cal_normal():
     print("IPC =",IPC_nomral)
     print("Dcache miss rate =",Dcache_miss_normal)
     print("Predict incorrect rate =",Pred_incorrect_normal)
-    print("ROB stall rate =",ROB_stall_normal)
+    #print("ROB stall rate =",ROB_stall_normal)
     
     return IPC_nomral,Dcache_miss_normal,Pred_incorrect_normal,ROB_stall_normal  
 
@@ -128,7 +130,7 @@ def disp_error():
     print("IPC :",cal_error(IPC_sim,IPC_nomral)*100,'%')
     print("Dcache miss :",cal_error(Dcache_miss_sim,Dcache_miss_normal)*100,'%')
     print("Predict incorrect :",cal_error(Pred_incorrect_sim,Pred_incorrect_normal)*100,'%')
-    print("ROB stall:",cal_error(ROB_stall_sim,ROB_stall_normal)*100,'%')
+    #print("ROB stall:",cal_error(ROB_stall_sim,ROB_stall_normal)*100,'%')
 
 parser=argparse.ArgumentParser(description="A tool for calculate stats for GEM5")
 parser.add_argument("-c","--compare",help="use compare method to calculate error rate",

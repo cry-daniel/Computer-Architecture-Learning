@@ -27,7 +27,7 @@
     ```bash
     python cal_stats.py -c
     ```
-    此命令是进行比较，输出结果如下：
+    此命令是进行比较，不更新数据采用默认数据输出结果如下：
     ```
     Simpoint results are:
     IPC = 1.6477541695712086

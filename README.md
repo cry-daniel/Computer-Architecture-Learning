@@ -16,8 +16,8 @@
 +   可以加速 GEM5 的模拟，在测试中可以将十数小时的程序在 60s 左右完成.
 
 ### cal_GEM5_stats
-+   从 GEM5 的统计文件中计算 IPC 等信息，运行 cal_stats.py 即可，运行前记得改最前面的路径.
-+   x使用方法详见内部的 README.md
++   从 GEM5 的统计文件中计算 IPC 等信息，运行 cal_stats.py 即可，运行前记得使用 `get_stats.sh` 读取数据以及改注释要改的路径.
++   使用方法详见内部的 README.md
 
 ### docs
 +   写代码时的技巧，让代码更加优雅

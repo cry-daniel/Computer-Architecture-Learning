@@ -23,7 +23,7 @@
     ```bash
     bash get_stats.sh
     ```
-    注：这里的 get_stats.sh 是配套 simpoint_GEM5 里结果使用的，对于其他结果需要自己根据需求调整
+    注：这里的 get_stats.sh 是配套 simpoint_GEM5 里结果使用的，对于其他结果需要自己根据需求调整.
 2.  修改 cal_stats.py 中的 sim_name，运行命令：
     ```bash
     python cal_stats.py -c

@@ -7,7 +7,7 @@ import tools.utils
 # simpoint 文件对应的前缀，如不是使用 simpoint_GEM5 生成的则需要更改后面的 weight_route 与 sim_route
 sim_name='graph500_s_14_e_14'
 
-# CPU 是 2.5GHz 的，stats.txt 里的数据有问题，要自己手动设置
+# 测试用的 CPU 是 2.5GHz 的，这个会被用来算 IPC. stats.txt 里的数据有问题，要自己手动设置
 freq=2.5e9
 
 normal_name='normal'

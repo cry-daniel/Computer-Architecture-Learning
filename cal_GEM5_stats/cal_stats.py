@@ -1,22 +1,22 @@
 import os
 import numpy as np
-import sys
-sys.path.append('.')
-import configs
 import argparse
+import tools.configs
+import tools.utils
 
-#   simpoint 文件对应的前缀，如不是使用 simpoint_GEM5 生成的则需要更改后面的 weight_route 与 sim_route
+# simpoint 文件对应的前缀，如不是使用 simpoint_GEM5 生成的则需要更改后面的 weight_route 与 sim_route
 sim_name='graph500_s_14_e_14'
+
+# CPU 是 2.5GHz 的，stats.txt 里的数据有问题，要自己手动设置
+freq=2.5e9
 
 normal_name='normal'
 checkpoint_name='test'
 
-route='./stats/'+checkpoint_name
-route_normal='./stats/'+normal_name
-weight_route='./simpoint/'+sim_name+'/'+sim_name+'_weight_file'
-sim_route='./simpoint/'+sim_name+'/'+sim_name+'_simpoint_file'
-
-import utils
+route=f"./data/stats/{checkpoint_name}"
+route_normal=f"./data/stats/{normal_name}"
+weight_route=f"./data/simpoint/{sim_name}/{sim_name}_weight_file"
+sim_route=f"./data/simpoint/{sim_name}/{sim_name}_simpoint_file"
 
 IPC_nomral=IPC_sim=0
 Dcache_miss_normal=Dcache_miss_sim=0
@@ -26,11 +26,15 @@ ROB_stall_normal=ROB_stall_sim=0
 def cal_sim():
     dir=[]
     res=[]
-    stats_name=configs.stats_name
-    start_sym=configs.start_sym
-    paras_sym=configs.paras_sym
-    paras=configs.paras
-    weight=utils.read_weight_file()
+    # stats_name = 'stats.txt'
+    stats_name=tools.configs.stats_name
+    # start_sym = '---------- Begin Simulation Statistics ----------'
+    start_sym=tools.configs.start_sym
+    # paras_sym 感兴趣的数据对应的关键词集合
+    paras_sym=tools.configs.paras_sym
+    # 用来记录那些数据的数组，大小为 len(paras_sym)
+    paras=tools.configs.paras
+    weight=tools.utils.read_weight_file(weight_route,sim_route)
     
     #   在并行执行reload时生成的文件夹可能不是顺序的，这个时候 os.walk 遍历就会出问题，解决方法是用 dir 记录每次访问的文件夹序号.
     for root,subdir,file in os.walk(route):
@@ -52,10 +56,12 @@ def cal_sim():
         for line in stats:
             if start_sym in line:
                 tot+=1
+            # 第一遍预热的数据不需要，所以等到tot==1(即第二遍访问到begin simulation的时候)才开始统计
             if tot == 1:
                 for i in range(len(paras_sym)):
-                    flag,para=utils.fin(paras_sym[i],line)
+                    flag,para=tools.utils.fin(paras_sym[i],line)
                     if flag == True:
+                        # i == 0 对应 freq ，这个是不变的
                         if i == 0:
                             paras[i]=para
                         else:
@@ -65,8 +71,9 @@ def cal_sim():
 
     # for i in range(len(paras_sym)):
     #     print(paras_sym[i],paras[i])
-        
-    IPC_sim=paras[1]/(2.5e9*paras[2])
+    
+    # 2.5GHz 的 IPC ， GEM5 里统计的 freq 有问题
+    IPC_sim=paras[1]/(freq*paras[2])
     Dcache_miss_sim=paras[4]/(paras[3]+paras[4])
     Pred_incorrect_sim=paras[6]/paras[5]
     ROB_stall_sim=paras[7]/paras[8]
@@ -82,10 +89,9 @@ def cal_sim():
 def cal_normal():
     dir=[]
     res=[]
-    stats_name=configs.stats_name
-    start_sym=configs.start_sym
-    paras_sym=configs.paras_sym_nor
-    paras=configs.paras_nor
+    stats_name=tools.configs.stats_name
+    paras_sym=tools.configs.paras_sym_nor
+    paras=tools.configs.paras_nor
     for root,subdir,file in os.walk(route_normal):
         #print(root,subdir,file)
         if root == route:
@@ -101,14 +107,14 @@ def cal_normal():
     for stats in res:
         for line in stats:
             for i in range(len(paras_sym)):
-                flag,para=utils.fin(paras_sym[i],line)
+                flag,para=tools.utils.fin(paras_sym[i],line)
                 if flag == True:
                     paras[i]=para
 
     #for i in range(len(paras_sym)):
         #print(paras_sym[i],paras[i])
     
-    IPC_nomral=paras[1]/(2.5e9*paras[2])
+    IPC_nomral=paras[1]/(freq*paras[2])
     Dcache_miss_normal=paras[4]/(paras[3]+paras[4])
     Pred_incorrect_normal=paras[6]/paras[5]
     ROB_stall_normal=paras[7]/paras[8]

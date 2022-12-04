@@ -1,7 +1,5 @@
 from numpy.core.fromnumeric import sort
-import configs
 import numpy as np
-from cal_stats import sim_route,weight_route
 
 num_list=['0','1','2','3','4','5','6','7','8','9','.']
 
@@ -14,14 +12,18 @@ def fin(para_sym,line):
     flag=False
     para=0
     if para_sym in line:
-        if para_sym == configs.seconds_sym:
-            para+=float("".join(list(filter(isdig,line))))
-        else:
-            para+=float("".join(list(filter(str.isdigit,line))))
+        line=line.split(para_sym)[1]
+        temp=""
+        for element in line:
+            if isdig(element):
+                temp+=element
+            if element=="#":
+                break
+        para=float(temp)
         flag=True
     return flag,para
 
-def read_weight_file(weight_route=weight_route,sim_route=sim_route):
+def read_weight_file(weight_route,sim_route):
     f_w=open(weight_route)
     f_s=open(sim_route)
     weight=f_w.readlines()
@@ -55,5 +57,5 @@ def num_sort(a):
     else:
         return a
 
-if __name__=="__main__":
-    print(read_weight_file())
+# if __name__=="__main__":
+#     print(read_weight_file())

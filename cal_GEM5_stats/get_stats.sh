@@ -13,9 +13,10 @@ RELOAD_ROUTE=/home/data/ChenRuiyang/gem5/m5out/graph500_s_14_e_14/graph500_s_14_
 #   存放 Normal 结果的地址，改成自己的
 NORMAL_ROUTE=/home/data/ChenRuiyang/gem5/m5out/graph500_s_14_e_14_normal/*
 
-rm -r ./simpoint/*
-rm -r ./stats/test/*
-rm -r ./stats/normal/*
-scp -r ${SSH_ROUTE}${SIM_ROUTE}/* ./simpoint/
-scp -r ${SSH_ROUTE}${RELOAD_ROUTE}/* ./stats/test/
-scp -r ${SSH_ROUTE}${NORMAL_ROUTE} ./stats/normal/
+rm -r ./data/simpoint/*
+rm -r ./data/stats/test/*
+rm -r ./data/stats/normal/*
+mkdir -p data;
+scp -r ${SSH_ROUTE}${SIM_ROUTE}/* ./data/simpoint/
+scp -r ${SSH_ROUTE}${RELOAD_ROUTE}/* ./data/stats/test/
+scp -r ${SSH_ROUTE}${NORMAL_ROUTE} ./data/stats/normal/
